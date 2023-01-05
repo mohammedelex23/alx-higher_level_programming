@@ -9,9 +9,9 @@ if __name__ == "__main__":
         exit(1)
 
     args = sys.argv
-    a = args[1]
+    a = int(args[1])
     operator = args[2]
-    b = args[3]
+    b = int(args[3])
     if operator not in ops:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
