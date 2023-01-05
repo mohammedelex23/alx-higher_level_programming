@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-import sys
-exit("#pythoniscool")
+import printer
