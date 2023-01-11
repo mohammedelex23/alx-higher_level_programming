@@ -1,18 +1,23 @@
 def roman_to_int(roman_string):
-    if not roman_string or not isinstance(roman_string, str):
+    if not isinstance(roman_string, str):
         return 0
+    dict = {
+        "M": 1000,
+        "D": 500,
+        "C": 100,
+        "L": 50,
+        "X": 10,
+        "V": 5,
+        "I": 1
+    }
 
-    values = {"I": 1, "V": 5, "X": 10, "L": 50,
-              "C": 100, "D": 500, "M": 1000}
-    sum = 0
-    length = len(roman_string)
-    for i in range(0, length):
-        first = roman_string[i]
-        second = roman_string[i]
-        if (i + 1) < len(roman_string):
-            second = roman_string[i + 1]
-        if values[first] < values[second]:
-            sum += -values[first]
+    last, total = 0, 0
+    for c in list(roman_string)[::-1]:
+        if last == 0:
+            total += dict[c]
+        elif last > dict[c]:
+            total -= dict[c]
         else:
-            sum += values[first]
-    return sum
+            total += dict[c]
+        last = dict[c]
+    return total
